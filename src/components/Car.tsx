@@ -1,5 +1,6 @@
 import "../styles/car.css"
 import React from "react";
+import { config } from '../config';
 import axios from 'axios';
 
 function Car(props:any){
@@ -9,7 +10,7 @@ function Car(props:any){
         let car = props.data;
         car.status = car.status ? false : true;
         console.log("searching ...", car);        
-        axios.post(`http://localhost:3000/cars/update`, car)
+        axios.post(`${config.host}cars/update`, car)
         .then( (cars) => {
             evt.target.checked = car.status;
         })

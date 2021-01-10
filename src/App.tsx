@@ -4,12 +4,14 @@ import axios from 'axios';
 import CarForm from './components/CarForm';
 import CarTable from './components/CarTable';
 import { useState, useEffect } from 'react';
+import { config } from './config';
+
 
 function App() {
   const [listCars, setListCars] = useState([]);
 
   const getCars = () => {
-    axios.get(`http://localhost:3000/cars/`)
+    axios.get(`${config.host}cars/`)
       .then( (cars) => {
         reciveData(cars.data);
       })
@@ -20,7 +22,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/cars/`)
+    axios.get(`${config.host}cars/`)
       .then( (cars) => {
         reciveData(cars.data);
       })
@@ -31,7 +33,7 @@ function App() {
 
   const newCar = (item : any) => {
     console.log("saving ...", item);
-    axios.post(`http://localhost:3000/cars/generate`, item)
+    axios.post(`${config.host}cars/generate`, item)
       .then( (cars) => {
         //console.log("cars::::" + cars)
         getCars();
