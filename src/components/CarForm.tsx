@@ -9,11 +9,14 @@ function CarForm(props : any){
     let newCar = (evt : any) => {
         evt.preventDefault();
         let car:any = {};
-        car.maker = evt.target.carMaker.value;
+        car.make = evt.target.carMaker.value;
         car.model = evt.target.carModel.value;
+        car.estimatedate = evt.target.estimatedate.value;
+        car.name="BMW"
         car.image = evt.target.carImg.value;
         car.description = evt.target.carDescription.value;
         car.km = evt.target.carKm.value;
+        car.status=false;
 
         props.onNewCar(car);
     }
@@ -39,6 +42,11 @@ function CarForm(props : any){
             <div className="cont__info">
                 <label>Description</label>
                 <input type="text" name="carDescription"/>
+            </div>
+
+            <div className="cont__info">
+                <label>Estimated Date</label>
+                <input type="date" name="estimatedate"/>
             </div>
 
 
