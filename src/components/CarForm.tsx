@@ -1,10 +1,7 @@
 import React from "react";
 import '../styles/carForm.css';
 
-function CarForm(props : any){
-    const style = {
-
-    }
+function CarForm(props : any){ 
 
     let newCar = (evt : any) => {
         evt.preventDefault();
