@@ -2,17 +2,22 @@ import "../styles/car.css"
 import React from "react";
 import { config } from '../config';
 import axios from 'axios';
+import { useState } from 'react';
 
 function Car(props:any){
+
+    const [carStatus, setCarStatus] = useState(props.data.status);
     
     let changeStatusCar = (evt : any) => {
         //evt.preventDefault();
         let car = props.data;
         car.status = car.status ? false : true;
-        console.log("searching ...", car);        
+        //console.log("searching ...", car);        
         axios.post(`${config.host}cars/update`, car)
         .then( (cars) => {
             evt.target.checked = car.status;
+            setCarStatus(car.status);
+        
         })
         .catch((err) => {
             //errorOnSearch(err);
@@ -20,7 +25,7 @@ function Car(props:any){
     }
 
     return (
-        <div className="poke">
+        <div className={ carStatus ? "poke_main" : "poke" }>
             <img className="poke_img" width="200px" src={props.data.image} alt="car"/>
             <div className="info__car">
                 <p className="poke_id">{props.data._id}</p>

@@ -6,6 +6,14 @@ div.poke
     min-width: 100px;
 }
 
+.poke_main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100px;
+  background-color: aliceblue;
+}
+
 .poke_id{
     margin-left: 10px;
 }
